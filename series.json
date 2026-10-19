@@ -17,6 +17,7 @@
  },
  "deliver_dir": "exports",
  "works_dir": "works",
+ "kit_dir": "kit",
  "outro": "想看更多这样的视频，记得一键三连哦！",
  "stories_dir": "stories"
 }

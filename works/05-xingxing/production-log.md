@@ -186,3 +186,12 @@
     → /Users/spring/Dev/ai_coding/weishenme/exports/05-为什么说猩猩最聪明_30秒版.mp4
     → /Users/spring/Dev/ai_coding/weishenme/exports/05-为什么说猩猩最聪明_30秒版_封面_4x3.png
     → /Users/spring/Dev/ai_coding/weishenme/exports/05-为什么说猩猩最聪明_30秒版_封面.png
+
+## 10-19 23:19:50  story.py harvest  — ok · 0s
+    HARVEST note 10-19 22:26:17: 自定义猩猩角色（ape/ape_side）为本期新增，其他期可复用；踩坑：spec 部位的 subject 要写主体名不是类型字母；FULL 兜底部位若只剩白底会报 Empty semantic part（faces/learn_eat/fossil 改为区域含墨线或前移声明）；木色树枝画在土色蚁巢上看不见，改用墨线
+    HARVEST note 10-19 22:46:53: 用户反馈侧面猩猩不像猩猩 → 重画 ape_side：凸吻、大圆耳、眉弓、驼背、颈肩衔接、去腿部杂线；prepare→render→sheet 已重看
+    HARVEST settle each note: a lesson about drawing this series → kit/LESSONS.md; an unclear error / missing check / wrong default → the skill (script check first, docs second)
+    HARVEST kit/LESSONS.md is missing: start it with this episode's lessons
+
+## 10-19 23:24:07  NOTE
+    已沉淀：ape / ape_side / ant 和毛色常量 → kit/characters.py，ape_parts → kit/character_parts.py，本期改为 import（重画 10 张图与迁移前逐像素一致）；三个部位坑 → 技能在 figures/prepare 阶段模拟渲染器归属规则提前报 PARTS（写明图名、部位、被谁占了），subject 写成类型时给提示；侧面猩猩特征、木色树枝看不见 → kit/LESSONS.md

@@ -1,18 +1,7 @@
 """为什么不把狼都消灭光 — what each figure shows, its parts, and the narration it must make visible (references/drawing.md)."""
 from partkit import *
+from character_parts import *   # 系列素材库 kit/：wolf_parts、deer_parts、ground_part
 from figkit import stand
-
-
-def wolf_parts(name, cx, cy, s, head_rot=0.0, prefix="", subject="wolf"):
-    return quadruped_parts(name, cx, cy, s, head_rot=head_rot, leg=45, tail="down", subject=subject, prefix=prefix)
-
-
-def deer_parts(name, cx, cy, s, head_rot=0.0, prefix="", subject="deer"):
-    return quadruped_parts(name, cx, cy, s, head_rot=head_rot, leg=60, antlers=True, subject=subject, prefix=prefix)
-
-
-def ground_part(name="ground", what="地面外框一笔"):
-    return P(name, "ground", "ground", [what], FULL)
 
 
 SPECS = {

@@ -1,21 +1,6 @@
 """为什么说猩猩最聪明 — what each figure shows, its parts, and the narration it must make visible."""
 from partkit import *
-
-
-def ape_parts(name, cx, cy, s=1.0, subject="ape", prefix=""):
-    """head / torso(含双臂) / legs boxes matching figures.ape(f, cx, cy, s)."""
-    g = lambda x0, y0, x1, y1: pose(name, rect(x0, y0, x1, y1), cx, cy, s)
-    return [
-        P(prefix + "head", subject, "head",
-          ["两只耳朵各一圈", "头部一圈", "脸庞一圈", "两只眼睛", "眉毛", "嘴巴"],
-          g(-140, -320, 140, -100)),
-        P(prefix + "torso", subject, "torso",
-          ["两只手臂各一笔", "身体外形一笔", "肚皮一圈"],
-          g(-200, -140, 200, 220)),
-        P(prefix + "legs", subject, "legs",
-          ["两条腿各一笔", "两只脚各一圈"],
-          g(-140, 120, 140, 345)),
-    ]
+from character_parts import *   # 系列素材库 kit/：ape_parts……
 
 
 SPECS = {

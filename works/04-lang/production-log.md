@@ -191,3 +191,6 @@
     → /Users/spring-kite/Dev/ai/ai_coding/gen-video/weishenme/exports/04-为什么不把狼都消灭光_30秒版_封面.png
 
 ## 10-19 18:43:38  story.py beats short  — ok · 0s
+
+## 10-19 23:24:07  NOTE
+    系列素材库：wolf / deer 和 WOLF/DEER/ANTLER → kit/characters.py，wolf_parts / deer_parts / ground_part → kit/character_parts.py，本期改为 import（重画 14 张图与迁移前逐像素一致）；羊像熊、鹿角太细、狼尾太短、脚悬空等画法经验 → kit/LESSONS.md

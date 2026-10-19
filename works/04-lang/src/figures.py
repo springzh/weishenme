@@ -1,25 +1,14 @@
 """为什么不把狼都消灭光 — every illustration of the episode (palette: forest)."""
 from figkit import *
+from characters import *        # 系列素材库 kit/：wolf、deer……（kit/catalog.md）
 
-WOLF = (196, 178, 150)
 PUP = (218, 204, 180)
 DOG = (232, 196, 140)
-DEER = (196, 142, 96)
-ANTLER = (228, 208, 172)
 FOX = (232, 146, 78)
 HARE = (206, 182, 150)
 SHEEP = (238, 234, 222)
 PAGE = (250, 246, 236)
 SHIELD = (242, 214, 120)
-
-
-def wolf(f, cx, cy, s=1.0, head_rot=0.0, fur=WOLF, crouch=0.0):
-    """The episode's wolf: lean body, long legs, pointed ears, bushy tail hanging down."""
-    quadruped(f, cx, cy, s, head_rot=head_rot, crouch=crouch, fur=fur, ear="pointed", tail="down", snout=1.08, body="slim", leg=45)
-
-
-def deer(f, cx, cy, s=1.0, head_rot=0.0):
-    quadruped(f, cx, cy, s, head_rot=head_rot, fur=DEER, ear="pointed", tail="stub", snout=0.92, body="slim", leg=60, antlers=ANTLER)
 
 
 @figure("storybook", 900, 600)

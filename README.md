@@ -23,6 +23,11 @@
 ```
 series.json            系列设置：系列名、徽标与水印、手、音色与语气指令、结语、目录约定（每期 init 时复制进 episode.json）
 stories/               输入：故事原文，文件名就是标题，如 为什么不把狼都消灭光.txt
+kit/                   系列素材库（series.json 的 kit_dir）：各期都能直接 import 的角色、道具和部位函数
+  characters.py          画图函数：ape、ape_side、ant、wolf、deer、fence……（各期 figures.py 里 from characters import *）
+  character_parts.py     对应的部位函数：ape_parts、wolf_parts、deer_parts、ground_part（各期 spec.py 里 from character_parts import *）
+  catalog.md / .png      素材目录：story.py catalog 生成，列出本系列和技能自带的全部角色，带样例图
+  LESSONS.md             本系列的画图经验和踩过的坑
 works/                 各期工作目录，一期一个，NN- 编号开头
   01-bihu/ 01-bihu-short/ 02-…/   01、02 两期（旧的手工流水线，见下）
   04-lang/             03 起的结构：
@@ -81,7 +86,7 @@ cd works/05-qie
 # 写 design.json、beats.full.json、beats.short.json
 python3 $SK/story.py beats full && python3 $SK/story.py beats short   # 字数、估计时长、钩子/互动检查
 python3 $SK/story.py tts full && python3 $SK/story.py tts short       # 整篇一次合成
-# 写 src/spec.py、src/figures.py
+# 先看 kit/catalog.png 和 kit/LESSONS.md：已有的角色直接用，再写 src/spec.py、src/figures.py
 python3 $SK/story.py figures                                          # 画图，然后看 figures/sheet.png，写 figure-review.json
 # 写 src/pages_full.py、src/pages_short.py
 python3 $SK/story.py prepare full                                     # 第一次会要求看封面并写 cover-review.json
@@ -92,6 +97,7 @@ python3 $SK/story.py asr full                                         # 听写�
 python3 $SK/story.py finalize full
 # 精简版同样走 prepare → render → sheet → asr → review.json → finalize
 python3 $SK/story.py deliver                                          # → exports/05-为什么企鹅不怕冷*.mp4 / *.png
+python3 $SK/story.py harvest                                          # 收尾：哪些函数该搬进 kit/、哪些日志要沉淀
 ```
 
 命名规则：工作目录用 `NN-<拼音短名>`，编号顺延，统一放在 `works/` 下（`series.json` 的 `works_dir`；`init` 只给名字时自动放进去）；`--title` 用 `stories/` 里的文件名（不带 .txt）。交付文件名是“编号-标题”，例如 `05-为什么企鹅不怕冷.mp4`，不加系列名前缀，因为系列名已经在封面徽标和水印里。
@@ -127,7 +133,9 @@ python3 $SK/story.py prepare full && python3 $SK/story.py render full
 ## 维护
 
 - **系列设置统一放在 `series.json`**。音色、语气指令、结语、水印、手都在这里改；新的一期 `init` 时自动带上。已有各期的 `episode.json` 不会跟着变。
-- **每期做完回看 `production-log.md`**。同一类返工出现两次以上，或者某个报错要靠猜才能定位，就去改 science-story-video 技能（脚本自查、文档、默认值），并在日志末尾补记一条“已沉淀进技能”。第 04 期就这样改进了配色推荐、时长估算、spec 自查、动物站位、标签定位，并把重复的隐私清理加了缓存。
+- **每期做完运行 `story.py harvest`，可复用的东西进 `kit/`**。它会列出本期 `src/` 里不是插图的函数（比如新画的角色），以及日志里所有的 NOTE。会被别的期用到的角色或道具搬进 `kit/characters.py`，加 `@sample` 好让它出现在目录图里，部位函数搬进 `kit/character_parts.py`，然后运行 `story.py catalog`。关于“这个系列怎么画”的经验写进 `kit/LESSONS.md`。这些都在本仓库里改，技能不动。
+- **只有工具本身的问题才改技能**：报错没说清楚、缺一项检查、默认值不对，或者某个画法已经证明和这个系列无关、到处能用（比如 `stand()`）。去 science-story-video 技能里改（先加脚本检查，再补文档），并在日志末尾补记一条“已沉淀进技能”。第 04 期就这样改进了配色推荐、时长估算、spec 自查、动物站位、标签定位，并给重复的隐私清理加了缓存。
+- **改 `kit/` 里的函数会影响用到它的每一期**。要改造型就加参数（保持原有默认值不变），改完重画用到它的各期，确认没变或者重看。
 - **科学更正必须有出处**，写进 `design.json` 的 `source_scope.sources` 和 `correction`。
 - **听感由人验收**。脚本和模型只能检查文字、时长、静音电平，语气、停顿和多音字需要人听。
 - **默认不加背景音乐**，需要的话在剪辑软件或发布平台里配。
