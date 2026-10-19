@@ -1,0 +1,62 @@
+{
+ "slug": "xingxing",
+ "title": "为什么说猩猩最聪明",
+ "series": "十万个为什么",
+ "series_mark": {
+  "badge": true,
+  "watermark": true
+ },
+ "palette": "forest",
+ "palette_reason": "猩猩住在森林里：全片画面主体是树林、草地、树枝和蚁巢，forest 的绿叶/草地/木色让棕褐色的猩猩最醒目；warm-paper 只靠\"动物/为什么\"等泛词得分。红色只留给强调字和爱心。",
+ "hand": "child-pencil",
+ "voice": {
+  "speaker": "zh_female_vv_uranus_bigtts",
+  "rate": 0,
+  "context": "像给小朋友讲故事的主播：开头特别惊讶、夸张、兴奋，后面活泼亲切，结尾热情"
+ },
+ "audience": "小学生及亲子观众",
+ "confirmation": {
+  "kind": "user_delegated",
+  "evidence": "用户原话（系列约定）：使用手绘视频skill 制作视频……全自动推进，直接做。不要提问。完成后再做一个时长在30秒左右的精简版本。"
+ },
+ "asr_terms": [
+  "猩猩",
+  "侏黑猩猩",
+  "印度尼西亚",
+  "类人猿",
+  "化石"
+ ],
+ "cover": {
+  "lines": [
+   "天哪！猩猩",
+   {
+    "text": "居然会劝架！",
+    "color": "accent",
+    "scale": 1.1
+   }
+  ],
+  "subtitle": "为什么说猩猩最聪明",
+  "short_tag": "30秒看懂：",
+  "hero": "ant_fish"
+ },
+ "variants": {
+  "full": {
+   "beats": "beats.full.json",
+   "pages": "src/pages_full.py"
+  },
+  "short": {
+   "beats": "beats.short.json",
+   "pages": "src/pages_short.py",
+   "label": "30秒精简版",
+   "file_label": "30秒版"
+  }
+ },
+ "ending": {
+  "hold_seconds": 0.6
+ },
+ "deliver": {
+  "dir": "../../exports",
+  "name": "05-为什么说猩猩最聪明"
+ },
+ "outro": "想看更多这样的视频，记得一键三连哦！"
+}
