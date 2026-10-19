@@ -1,0 +1,17 @@
+{
+ "engine": "volcengine seed-tts-2.0 async (submit/query) with word timestamps",
+ "speaker": "zh_female_vv_uranus_bigtts",
+ "speech_rate": 0,
+ "tone_context": "像给小朋友讲故事的主播：开头特别惊讶、夸张、兴奋，后面活泼亲切，结尾热情",
+ "text_sha256": "31944232064989f56e726d06d79f5a0793fa65f9a3be454d526f398fe7d5ad2b",
+ "requests": 1,
+ "protection_suffix": "我们下期再见。",
+ "delivered_text_excludes_suffix": true,
+ "master_edit": {
+  "edits": 1,
+  "description": "在末字之后的自然停顿（30.76–31.26s）中最安静的位置 31.188s（-62 dBFS）作15ms淡出截断，去掉保护后缀“我们下期再见。”；随后补0.16s静音。正文其余样本未改动。",
+  "raw_sha256": "332e77b9e9748db1b8dde7ec25bcf0d978b3e9f6fc62ce7a088bdd2cde5b0381",
+  "master_sha256": "c524ba9bf2034fda8136b920b8be8c525b4b0bfe355dfe6a3cd9421d1004ce6e",
+  "master_seconds": 31.348
+ }
+}

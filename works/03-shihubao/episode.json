@@ -1,0 +1,66 @@
+{
+ "slug": "shihubao",
+ "title": "为什么狮、虎、豹在白天老睡觉",
+ "series": "十万个为什么",
+ "series_mark": {
+  "badge": true,
+  "watermark": true
+ },
+ "palette": "sun-desert",
+ "palette_reason": "狮、虎、豹的老家是炎热的草原和林地，白天躲太阳是原因之一：阳光沙漠主题（沙色地面、暖橙太阳）；夜晚用深色块面。关键词推荐给了 warm-paper（命中“动物/小朋友”等泛词），按画面主体与“白天炎热”改选 sun-desert",
+ "hand": "child-pencil",
+ "voice": {
+  "speaker": "zh_female_vv_uranus_bigtts",
+  "rate": 0,
+  "context": "像给小朋友讲故事的主播：开头特别惊讶、夸张、兴奋，后面活泼亲切，结尾热情"
+ },
+ "audience": "小学生及亲子观众",
+ "confirmation": {
+  "kind": "user_delegated",
+  "evidence": "用户原话（系列约定）：使用手绘视频skill 制作视频……全自动推进，直接做。不要提问。完成后再做一个时长在30秒左右的精简版本。"
+ },
+ "asr_terms": [
+  "狮子",
+  "老虎",
+  "豹子",
+  "动物园",
+  "捕猎",
+  "埋伏",
+  "喂食",
+  "傍晚",
+  "小猫"
+ ],
+ "cover": {
+  "lines": [
+   "天哪！狮子一天能睡",
+   {
+    "text": "二十个小时！",
+    "color": "accent",
+    "scale": 1.15
+   }
+  ],
+  "subtitle": "白天睡大觉的秘密",
+  "short_tag": "30秒看懂：",
+  "hero": "lion_sleep"
+ },
+ "variants": {
+  "full": {
+   "beats": "beats.full.json",
+   "pages": "src/pages_full.py"
+  },
+  "short": {
+   "beats": "beats.short.json",
+   "pages": "src/pages_short.py",
+   "label": "30秒精简版",
+   "file_label": "30秒版"
+  }
+ },
+ "ending": {
+  "hold_seconds": 0.6
+ },
+ "deliver": {
+  "dir": "../../exports",
+  "name": "03-为什么狮、虎、豹在白天老睡觉"
+ },
+ "outro": "想看更多这样的视频，记得一键三连哦！"
+}

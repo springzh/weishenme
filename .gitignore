@@ -1,0 +1,59 @@
+# 《十万个为什么》手绘科普视频系列
+# 原则：只收“源头”和“花钱/花人工、不能免费重建”的东西；其余都能用 story.py 重新生成。
+
+# ---- 系统 / Python / 密钥 ----
+.DS_Store
+__pycache__/
+*.pyc
+# VOLC_TTS_KEY 等密钥只放 .env，绝不入库
+.env
+.env.*
+!.env.example
+
+# ---- exports/：交付给平台的成片和封面 ----
+# 由 `story.py deliver` 从各期的渲染结果复制而来，体积大（每期约 25MB）、每次重渲都会变；
+# 发布或备份走网盘 / 平台，不进 git。
+/exports/*
+!/exports/.gitkeep
+
+# ---- 用 science-story-video 制作的各期（03 起：works/NN-拼音/，含 episode.json）----
+# 入库：episode.json、design.json、beats.*.json、src/、figures/、source/、
+#       figure-review.json、cover-review.json、production-log.md
+# design-src/：`story.py figures` 写出的简报和“代码即提示词”，每次画图重新生成
+/works/[0-9][0-9]-*/design-src/
+# full/、short/：`story.py prepare/render` 生成的渲染任务目录（每期 200MB 左右），只留两样：
+#   review.json —— 看帧、听写后人工写的验收记录
+#   inputs/narration/raw.mp3 + words.json + generation.json —— 付费 TTS 的原始结果；
+#     有了它们 `story.py tts` 会复用、不重新付费，master.wav / alignment.json 也会据此重建
+/works/[0-9][0-9]-*/full/*
+/works/[0-9][0-9]-*/short/*
+!/works/[0-9][0-9]-*/full/review.json
+!/works/[0-9][0-9]-*/short/review.json
+!/works/[0-9][0-9]-*/full/inputs/
+!/works/[0-9][0-9]-*/short/inputs/
+/works/[0-9][0-9]-*/full/inputs/*
+/works/[0-9][0-9]-*/short/inputs/*
+!/works/[0-9][0-9]-*/full/inputs/narration/
+!/works/[0-9][0-9]-*/short/inputs/narration/
+/works/[0-9][0-9]-*/full/inputs/narration/*
+/works/[0-9][0-9]-*/short/inputs/narration/*
+!/works/[0-9][0-9]-*/full/inputs/narration/raw.mp3
+!/works/[0-9][0-9]-*/short/inputs/narration/raw.mp3
+!/works/[0-9][0-9]-*/full/inputs/narration/words.json
+!/works/[0-9][0-9]-*/short/inputs/narration/words.json
+!/works/[0-9][0-9]-*/full/inputs/narration/generation.json
+!/works/[0-9][0-9]-*/short/inputs/narration/generation.json
+
+# ---- works/ 下的 01、02 两期（技能出现前的手工流水线：一个版本一个目录，脚本在 src/）----
+# 入库：src/（画图、分页、封面、配音脚本与 beats.json）、design.json、review.json、
+#       inputs/narration/ 下的 generation.json 与 alignment.json（合成参数与字级时间）
+# 其余都是 src/regen.sh 与手绘技能生成的：渲染工作区、成片、美术与画风记录、插图、封面、wav 母带
+/works/0[12]-*/work/
+/works/0[12]-*/outputs/
+/works/0[12]-*/design/
+/works/0[12]-*/style/
+/works/0[12]-*/options/
+/works/0[12]-*/job.json
+/works/0[12]-*/inputs/*
+!/works/0[12]-*/inputs/narration/
+/works/0[12]-*/inputs/narration/*.wav

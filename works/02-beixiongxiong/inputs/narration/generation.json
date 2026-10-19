@@ -1,0 +1,16 @@
+{
+ "engine": "volcengine seed-tts-2.0 unidirectional",
+ "speaker": "zh_female_vv_uranus_bigtts",
+ "speech_rate": 0,
+ "text_sha256": "15c8e10a3f7978467ebca1696b1755b92d15434a89eb4213618a73dd6cb33966",
+ "requests": 1,
+ "protection_suffix": "我们下期再见。",
+ "delivered_text_excludes_suffix": true,
+ "master_edit": {
+  "edits": 1,
+  "description": "在“好身材。”之后的自然停顿（107.50–107.62s，-48~-69dBFS）中 107.565s 处作15ms淡出截断，去掉保护后缀“我们下期再见。”；随后补0.16s静音。正文其余样本未改动。",
+  "raw_sha256": "dc3e998703761a4a123acdae5ddaa7e82071ff3541811e658bf57595da530bda",
+  "master_sha256": "54e2b80ababd722fa1af20db87ccd403b1478202d098ef155abeea9b457c9662",
+  "master_seconds": 107.725
+ }
+}

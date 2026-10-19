@@ -1,0 +1,117 @@
+{
+ "storybook": {
+  "observed": {
+   "bad": "打开的故事书，右页画着一只灰黄色、耳朵竖起、尾巴下垂的狼站在地面上；左页是太阳、一棵树和地面"
+  },
+  "anatomy_and_occlusion": "狼完整在右页内；左页太阳被树冠遮住一角",
+  "part_boundaries": "狼头/身体/腿 → 左页 → 右页外框（FULL）",
+  "stroke_breaks": "书页外框、太阳、树干、树冠、地面、狼的各部位各自独立一笔"
+ },
+ "kid": {
+  "observed": {
+   "ask": "正面站立的小朋友，棕色短发，扬眉圆嘴，一脸好奇，黄色外套"
+  },
+  "anatomy_and_occlusion": "头发压在头顶；袖根被衣身遮住",
+  "part_boundaries": "kid_parts 六部分",
+  "stroke_breaks": "头发、脸、外套、袖子、手、裤腿、靴子各自一笔"
+ },
+ "wolf_dog": {
+  "observed": {
+   "ears": "左边灰黄色的狼：耳朵尖尖竖着，粗尾巴向下垂到腿边",
+   "dog": "右边浅棕色的狗：耳朵耷拉在脸旁，尾巴高高向上卷起"
+  },
+  "anatomy_and_occlusion": "两只都四脚踩在地面上；远侧腿颜色略深、被近侧腿挡住一部分",
+  "part_boundaries": "狼（头/身体/腿）→ 狗（头/身体/腿）→ 地面",
+  "stroke_breaks": "每条腿、尾巴、身体、头、耳朵各自一笔"
+ },
+ "pack": {
+  "observed": {
+   "family": "两只大狼在左，两只颜色更浅、个子小一半的小狼崽在右，四只都站在同一条地面上"
+  },
+  "anatomy_and_occlusion": "两只小狼崽前后略有重叠，后面那只的尾巴被前一只挡住一点；大狼不再重叠",
+  "part_boundaries": "四只狼各分头/身体/腿，地面最后",
+  "stroke_breaks": "每只狼的腿、尾巴、身体、头、耳朵各自一笔"
+ },
+ "howl": {
+  "observed": {
+   "howl": "狼仰头、鼻尖朝右上，嘴前三道红色弧线向外扩散；左上角一个黄色月亮，不与弧线重叠"
+  },
+  "anatomy_and_occlusion": "四脚踩地；头抬起后脖子由身体遮住",
+  "part_boundaries": "月亮 → 狼（头/身体/腿）→ 地面与声音弧线",
+  "stroke_breaks": "月亮、弧线每道、狼各部位独立一笔"
+ },
+ "eat": {
+  "observed": {
+   "menu": "从左到右：带鹿角的棕色鹿、坐着的灰棕野兔、小田鼠、一只白色卷毛的羊（脸色较深），都站在地面上"
+  },
+  "anatomy_and_occlusion": "各动物不重叠；羊的腿在卷毛身体下方露出",
+  "part_boundaries": "鹿（头/身体/腿）→ 野兔两部分 → 田鼠两部分 → 羊两部分 → 地面",
+  "stroke_breaks": "每只动物的身体、头、耳朵、尾巴各自一笔"
+ },
+ "gone": {
+  "observed": {
+   "eaten": "三只带鹿角的鹿低头把嘴伸向岸边，岸上一排被啃断的短树桩，没有一棵树",
+   "empty": "整段河岸没有树、天上和岸边都没有鸟，下方是浅蓝色的河"
+  },
+  "anatomy_and_occlusion": "鹿四脚踩在河岸上；树桩在鹿嘴边",
+  "part_boundaries": "三只鹿各分头/身体/腿，河岸树桩河水归 bank（FULL）",
+  "stroke_breaks": "每只鹿各部位、每个树桩、河岸、河水各自一笔"
+ },
+ "back": {
+  "observed": {
+   "wolf": "左侧河岸上站着一只灰黄色的狼",
+   "green": "河岸上三棵大树和两棵小树苗，树上停着红、黄两只小鸟，天上两只飞鸟，河边一只棕色河狸，远处一只小鹿"
+  },
+  "anatomy_and_occlusion": "狼和鹿踩在河岸上；河狸坐在水边，下半身被河水遮住一点",
+  "part_boundaries": "狼 → 鹿 → 河狸 → 飞鸟 → 树/河岸/河水（FULL）",
+  "stroke_breaks": "树干、树冠、树苗、鸟、河狸各自一笔"
+ },
+ "chain": {
+  "observed": {
+   "chain": "左边一只狼、中间一只带鹿角的鹿、右边一棵树，中间两支黑色箭头从左指向右"
+  },
+  "anatomy_and_occlusion": "三者间距清楚，都踩在地面上",
+  "part_boundaries": "狼 → 鹿 → 箭头/树/地面",
+  "stroke_breaks": "每个动物各部位、两支箭头、树干、树冠各自一笔"
+ },
+ "protect": {
+  "observed": {
+   "protect": "一面黄色大盾牌，中间站着一只狼，左右上方各一个红色十字闪光"
+  },
+  "anatomy_and_occlusion": "狼完整在盾牌内",
+  "part_boundaries": "狼 → 盾牌与闪光",
+  "stroke_breaks": "盾牌外框、闪光、狼各部位独立一笔"
+ },
+ "safe": {
+  "observed": {
+   "away": "左边远处一只狼，右边一个小朋友，地面上一支红色箭头指向右边（远离狼的方向）"
+  },
+  "anatomy_and_occlusion": "狼和小朋友都踩在地面上，两者相隔很远",
+  "part_boundaries": "狼 → 小朋友六部分 → 地面和箭头",
+  "stroke_breaks": "各部位独立一笔"
+ },
+ "wolf_tree": {
+  "observed": {
+   "place": "一只灰黄色的狼站在大树左边，树冠完整、上面停着一只红色小鸟，地上几丛小草"
+  },
+  "anatomy_and_occlusion": "狼四脚踩地，鼻尖和树干之间有空隙；树冠完整未出画",
+  "part_boundaries": "狼（头/身体/腿）→ 树/鸟/草/地面",
+  "stroke_breaks": "每个形状独立一笔"
+ },
+ "fox_hare": {
+  "observed": {
+   "q": "左边一只橙色狐狸、尖耳朵和蓬松的大尾巴；右边一只坐着的长耳朵野兔"
+  },
+  "anatomy_and_occlusion": "两只都踩在地面上，互不重叠",
+  "part_boundaries": "狐狸（头/身体/腿）→ 野兔两部分 → 地面",
+  "stroke_breaks": "每个形状独立一笔"
+ },
+ "sanlian": {
+  "observed": {
+   "sanlian": "一排三个图标：粉色爱心、金色硬币（内外两圈）、金色五角星"
+  },
+  "anatomy_and_occlusion": "三个图标互不重叠",
+  "part_boundaries": "横向三等分：爱心、硬币、星星",
+  "stroke_breaks": "爱心一笔、硬币两圈各一笔、星星一笔"
+ }
+}

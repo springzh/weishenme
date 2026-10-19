@@ -1,0 +1,16 @@
+{
+ "engine": "volcengine seed-tts-2.0 unidirectional",
+ "speaker": "zh_female_vv_uranus_bigtts",
+ "speech_rate": 0,
+ "text_sha256": "0e0fe4c4b2346d2048eccf1639cd2a2ada037c7f5ede9a83b5da98045b17cf97",
+ "requests": 1,
+ "protection_suffix": "我们下期再见。",
+ "delivered_text_excludes_suffix": true,
+ "master_edit": {
+  "edits": 1,
+  "description": "在“游泳呢！”之后的自然停顿（30.70–30.90s，-54~-64dBFS）中 30.80s 处作15ms淡出截断，去掉保护后缀“我们下期再见。”；随后补0.16s静音。正文其余样本未改动。",
+  "raw_sha256": "c98d3e6bfce9b00e5ec94691ac3e29aa43ec586f476860478ecc659843b7a5f9",
+  "master_sha256": "354fdcc8d97c88a21686d43218fb60e9fe168619d569035b2bf9ea46eee3f9e6",
+  "master_seconds": 30.96
+ }
+}

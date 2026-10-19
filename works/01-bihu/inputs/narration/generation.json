@@ -1,0 +1,16 @@
+{
+ "engine": "volcengine seed-tts-2.0 unidirectional",
+ "speaker": "zh_female_vv_uranus_bigtts",
+ "speech_rate": 0,
+ "text_sha256": "ac125693f4b9216c5194af3275fa0a34a4547f2a2b802ea309ff2055a2aa763b",
+ "requests": 1,
+ "protection_suffix": "我们下期再见。",
+ "delivered_text_excludes_suffix": true,
+ "master_edit": {
+  "edits": 1,
+  "description": "在“细毛。”之后的自然停顿（89.34–89.76s，-44~-58dBFS 的合成底噪）中 89.36s 处作15ms淡出截断，去掉保护后缀“我们下期再见。”；随后保留0.16s静音代替该停顿内的底噪（短于原停顿0.42s，未延长任何内容）。正文其余样本未改动。",
+  "raw_sha256": "143100c37e4ef31cd8f12cf4b5fe892fad1c4b1c743236cebe8ac92487a2c839",
+  "master_sha256": "74e55aa478221565c2018988c13e387e659e64139faaf463326c827999197975",
+  "master_seconds": 89.52
+ }
+}

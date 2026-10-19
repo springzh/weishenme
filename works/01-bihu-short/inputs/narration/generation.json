@@ -1,0 +1,16 @@
+{
+ "engine": "volcengine seed-tts-2.0 unidirectional",
+ "speaker": "zh_female_vv_uranus_bigtts",
+ "speech_rate": 0,
+ "text_sha256": "aca77526253b7a4996e5cedc65715db9b9e2a103ee558e76b641434e44e223f6",
+ "requests": 1,
+ "protection_suffix": "我们下期再见。",
+ "delivered_text_excludes_suffix": true,
+ "master_edit": {
+  "edits": 1,
+  "description": "在“秘密。”后的自然停顿中 25.65s 处15ms淡出，去掉保护后缀“我们下期再见。”，补0.16s静音；正文未切片。",
+  "raw_sha256": "f3ff354e41cb225f0c355faf0cd1869c60744f0e6630edb686bfcc2010cd6ad2",
+  "master_sha256": "d49a94ac7d7f7a25361d401ed1b2728d350ac62434dc28175a0b0f42b3ab4a80",
+  "master_seconds": 25.81
+ }
+}

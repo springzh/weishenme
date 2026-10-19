@@ -1,0 +1,60 @@
+{
+ "slug": "lang",
+ "title": "为什么不把狼都消灭光",
+ "series": "十万个为什么",
+ "series_mark": {
+  "badge": true,
+  "watermark": true
+ },
+ "palette": "forest",
+ "palette_reason": "故事主体是森林与河边（黄石公园的鹿、小树、河狸、鸟），自动推荐的 warm-paper 只靠“动物/为什么/小朋友”等泛词得分；手选 forest：绿叶、树干棕、浅蓝河水。",
+ "hand": "child-pencil",
+ "voice": {
+  "speaker": "zh_female_vv_uranus_bigtts",
+  "rate": 0,
+  "context": "像给小朋友讲故事的主播：开头特别惊讶、夸张、兴奋，后面活泼亲切，结尾热情"
+ },
+ "audience": "小学生及亲子观众",
+ "confirmation": {
+  "kind": "user_delegated",
+  "evidence": "用户原话（系列约定）：使用手绘视频skill 制作视频……全自动推进，直接做。不要提问。完成后再做一个时长在30秒左右的精简版本。"
+ },
+ "asr_terms": [
+  "黄石公园",
+  "河狸",
+  "嗷呜"
+ ],
+ "cover": {
+  "lines": [
+   "天哪！狼没了",
+   {
+    "text": "小树竟然遭殃了！",
+    "color": "accent",
+    "scale": 1.1
+   }
+  ],
+  "subtitle": "狼和大自然的平衡",
+  "short_tag": "30秒看懂：",
+  "hero": "wolf_tree"
+ },
+ "variants": {
+  "full": {
+   "beats": "beats.full.json",
+   "pages": "src/pages_full.py"
+  },
+  "short": {
+   "beats": "beats.short.json",
+   "pages": "src/pages_short.py",
+   "label": "30秒精简版",
+   "file_label": "30秒版"
+  }
+ },
+ "ending": {
+  "hold_seconds": 0.6
+ },
+ "deliver": {
+  "dir": "../../exports",
+  "name": "04-为什么不把狼都消灭光"
+ },
+ "outro": "想看更多这样的视频，记得一键三连哦！"
+}
