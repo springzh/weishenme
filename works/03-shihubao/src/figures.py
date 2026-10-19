@@ -1,5 +1,6 @@
 """为什么狮、虎、豹在白天老睡觉 — every illustration of the episode (palette: sun-desert)."""
 from figkit import *
+from characters import *        # 系列素材库 kit/：fence……（kit/catalog.md）
 
 LION = (232, 190, 120)
 MANE = (196, 122, 66)
@@ -11,14 +12,6 @@ NIGHT_GROUND = (128, 112, 118)
 GOLD = (240, 196, 80)
 EYEBALL = (248, 242, 228)
 CUSHION = (240, 168, 168)
-
-
-def fence(f, x0, x1, y0, y1, step=60):
-    """Zoo enclosure: two rails and vertical bars (all ink strokes)."""
-    for y in (y0 + 10, (y0 + y1) / 2):
-        f.line([(x0, y), (x1, y)], 5, amp=0.6, smooth=False)
-    for x in range(int(x0) + 20, int(x1), step):
-        f.line([(x, y0), (x, y1)], 5, amp=0.4, smooth=False)
 
 
 @figure("kid", 520, 720)
