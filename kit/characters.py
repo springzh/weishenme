@@ -133,7 +133,148 @@ def deer(f, cx, cy, s=1.0, head_rot=0.0):
     quadruped(f, cx, cy, s, head_rot=head_rot, fur=DEER, ear="pointed", tail="stub", snout=0.92, body="slim", leg=60, antlers=ANTLER)
 
 
-# ---------------------------------------------------------------- 道具（03 期）
+# ---------------------------------------------------------------- 袋鼠（06 期）
+# 橙棕毛色（不偏冷，最亮通道 198），育儿袋用浅色肚皮
+KANGAROO = (198, 132, 78)
+KANGAROO_DARK = (168, 108, 62)
+KANGAROO_BELLY = (238, 206, 164)
+JOEY_FUR = (222, 172, 138)
+JOEY_PINK = (238, 162, 148)
+
+
+@sample(standing={}, joey_peek=dict(joey=True), leap=dict(pose="leap"))
+def kangaroo(f, cx, cy, s=1.0, pose="stand", joey=False, fur=None, head_rot=0.0):
+    """Side-view red kangaroo facing right; (cx, cy) = ground under the feet (pose="stand") or the
+    ground line under an airborne animal (pose="leap"). Local frame (s=1, stand): ear tips ≈ cy-640,
+    feet on cy, tail tip ≈ cx-350. Pouch opening runs from (52,-350) to (124,-344).
+    joey=True: a baby head peeking out of the pouch."""
+    fur = fur or KANGAROO
+    fur2 = tuple(int(c * 0.92) for c in fur)
+    if pose == "leap":
+        _kangaroo_leap(f, cx, cy, s, fur, fur2, joey)
+        return
+    g = lambda pts: T(pts, cx, cy, s)
+    # far arm (behind the body)
+    f.shape(g(tube([(100, -444), (128, -398), (120, -370)], 17, 13)), fur2, 5, smooth=False)
+    f.ellipse(*g([(118, -362)])[0], 15 * s, 12 * s, fur2, 4)
+    # tail: thick at the hip, resting on the ground
+    f.shape(g(tube([(-58, -276), (-170, -204), (-272, -104), (-350, -28)], 38, 15)), fur, 6, smooth=False)
+    # far hind leg
+    f.shape(g(tube([(-6, -306), (74, -224), (96, -72)], 36, 22)), fur2, 5, smooth=False)
+    f.ellipse(*g([(34, -22)])[0], 76 * s, 15 * s, fur2, 4)
+    # body (pear shape, leaning forward)
+    f.shape(g([(-74, -270), (-64, -382), (-8, -452), (52, -492), (108, -474), (132, -402),
+               (138, -320), (124, -250), (92, -205), (20, -188), (-32, -204)]), fur, 6)
+    # near arm, held against the chest (behind the pouch)
+    f.shape(g(tube([(122, -452), (166, -400), (156, -362)], 17, 13)), fur, 5, smooth=False)
+    f.ellipse(*g([(154, -354)])[0], 15 * s, 12 * s, fur, 4)
+    # pouch pocket on the belly
+    f.shape(g([(96, -352), (112, -374), (140, -368), (150, -336), (150, -296),
+               (136, -272), (108, -272), (94, -310)]), KANGAROO_BELLY, 5)
+    if joey:
+        x, y = g([(118, -376)])[0]
+        f.ellipse(x - 24 * s, y - 38 * s, 11 * s, 20 * s, fur2, 5, rot=0.5)      # far ear
+        f.ellipse(x + 24 * s, y - 40 * s, 11 * s, 20 * s, fur, 5, rot=-0.5)      # near ear
+        f.ellipse(x, y - 14 * s, 29 * s, 26 * s, JOEY_FUR, 5)                    # head
+        f.ellipse(x + 8 * s, y - 2 * s, 19 * s, 13 * s, KANGAROO_BELLY, 4)       # muzzle
+        for dx in (-13, 1):
+            f.blot(x + dx * s, y - 22 * s, 4 * s + 1, 5 * s + 1)
+        f.blot(x + 20 * s, y, 5 * s, 4 * s)
+    # pouch lip (covers the joey's chest)
+    f.line(g([(94, -350), (118, -338), (146, -344)]), 5, amp=0.2)
+    # near hind leg: thigh, shin, long foot
+    f.shape(g([(4, -322), (64, -336), (132, -286), (166, -214), (148, -182), (78, -198), (16, -250)]), fur, 6)
+    f.shape(g(tube([(150, -240), (132, -24)], 34, 24)), fur, 6, smooth=False)
+    f.ellipse(*g([(112, -18)])[0], 95 * s, 18 * s, fur, 5)
+    for tx in (58, 88, 120, 152):
+        f.line(g([(tx, -30), (tx + 8, -10)]), 3.5, amp=0.1, smooth=False)          # toes
+    # neck fills the shoulder gap, then head: far ear, skull, near ear, muzzle, face
+    f.shape(g(tube([(84, -470), (128, -502)], 46, 40)), fur, 0, smooth=False)   # fill only: no collar line
+    f.shape(g(tube([(164, -556), (178, -612), (186, -646)], 22, 12)), fur2, 5, smooth=False)   # far ear
+    f.shape(g([(88, -500), (100, -548), (140, -570), (184, -556), (222, -528), (260, -494),
+               (280, -468), (272, -446), (248, -436), (212, -440), (176, -454), (140, -470), (110, -482)]), fur, 6)
+    f.shape(g(tube([(120, -552), (104, -608), (94, -650)], 26, 13)), fur, 5, smooth=False)      # near ear
+    f.ellipse(*g([(240, -468)])[0], 32 * s, 22 * s, KANGAROO_BELLY, 4)            # muzzle
+    f.blot(*g([(188, -518)])[0], 7 * s + 1, 8 * s + 1)                            # eye
+    f.blot(*g([(270, -460)])[0], 8 * s, 6 * s)                                    # nose
+    f.line(g([(262, -442), (246, -440)]), 4, amp=0.2, smooth=False)               # mouth
+    f.line(g([(168, -540), (200, -534)]), 4, amp=0.1, smooth=False)               # brow
+
+
+def _kangaroo_leap(f, cx, cy, s, fur, fur2, joey=False):
+    """Airborne kangaroo: body stretched forward, hind legs trailing, tail straight back."""
+    g = lambda pts: T(pts, cx, cy, s)
+    f.shape(g(tube([(-120, -332), (-250, -320), (-372, -290)], 28, 13)), fur, 6, smooth=False)   # tail
+    f.shape(g(tube([(-60, -300), (-160, -270), (-250, -230)], 26, 15)), fur2, 5, smooth=False)   # far leg
+    f.ellipse(*g([(-272, -222)])[0], 54 * s, 12 * s, fur2, 4, rot=-0.35)                          # far foot
+    f.shape(g(tube([(-20, -290), (-130, -256), (-220, -214)], 30, 17)), fur, 5, smooth=False)     # near leg
+    f.ellipse(*g([(-244, -206)])[0], 58 * s, 13 * s, fur, 4, rot=-0.4)                            # near foot
+    f.shape(g([(-152, -338), (-120, -396), (-40, -420), (60, -424), (142, -402), (174, -360),
+               (164, -300), (92, -268), (0, -266), (-96, -286)]), fur, 6)                         # body
+    f.ellipse(*g([(84, -304)])[0], 36 * s, 28 * s, KANGAROO_BELLY, 0)                             # belly
+    if joey:                                                                                     # baby tucked in
+        x, y = g([(112, -300)])[0]
+        f.ellipse(x - 17 * s, y - 30 * s, 8 * s, 15 * s, fur2, 4, rot=0.5)
+        f.ellipse(x + 17 * s, y - 32 * s, 8 * s, 15 * s, fur, 4, rot=-0.5)
+        f.ellipse(x, y - 10 * s, 21 * s, 19 * s, JOEY_FUR, 4)
+        f.ellipse(x + 6 * s, y - 2 * s, 14 * s, 10 * s, KANGAROO_BELLY, 3)
+        for dx in (-10, 2):
+            f.blot(x + dx * s, y - 15 * s, 3 * s + 1, 4 * s + 1)
+        f.line(g([(86, -280), (112, -270), (138, -280)]), 4, amp=0.2)                            # pouch lip
+    f.shape(g(tube([(120, -382), (160, -348), (146, -320)], 16, 12)), fur2, 5, smooth=False)      # far arm
+    f.ellipse(*g([(144, -312)])[0], 14 * s, 11 * s, fur2, 4)
+    f.shape(g(tube([(136, -394), (176, -360), (162, -332)], 16, 12)), fur, 5, smooth=False)       # near arm
+    f.ellipse(*g([(160, -324)])[0], 14 * s, 11 * s, fur, 4)
+    f.shape(g(tube([(150, -440), (160, -486), (164, -510)], 20, 11)), fur2, 5, smooth=False)      # far ear
+    f.shape(g(tube([(150, -380), (190, -420)], 42, 36)), fur, 0, smooth=False)                     # neck (fill only)
+    f.shape(g([(150, -410), (162, -452), (198, -470), (238, -456), (274, -430), (306, -404),
+               (314, -380), (298, -364), (264, -366), (228, -378), (192, -390), (162, -400)]), fur, 6)  # head
+    f.shape(g(tube([(142, -436), (130, -480), (124, -504)], 22, 12)), fur, 5, smooth=False)       # near ear
+    f.ellipse(*g([(290, -390)])[0], 28 * s, 20 * s, KANGAROO_BELLY, 4)                            # muzzle
+    f.blot(*g([(240, -430)])[0], 7 * s + 1, 8 * s + 1)                                            # eye
+    f.blot(*g([(310, -386)])[0], 8 * s, 6 * s)                                                    # nose
+
+
+@sample(default={}, bigger=dict(s=1.5))
+def joey_bean(f, cx, cy, s=1.0, color=None):
+    """Newborn joey about the size of a jellybean: pink bean-shaped body, closed eye, two front claws,
+    a curled tail. (cx, cy) = centre of the bean body."""
+    color = color or JOEY_PINK
+    g = lambda pts: T(pts, cx, cy, s)
+    f.shape(g([(-46, -6), (-40, -34), (-14, -48), (16, -46), (44, -30), (50, -2),
+               (38, 26), (8, 38), (-24, 32), (-44, 16)]), color, 5)
+    f.ellipse(*g([(30, -18)])[0], 24 * s, 20 * s, tuple(min(255, c + 14) for c in color), 4)   # head end
+    f.line(g([(30, -26), (38, -28)]), 3, amp=0.1, smooth=False)                                # closed eye
+    f.blot(*g([(52, -16)])[0], 4 * s, 3 * s)                                                   # tiny nose
+    for dx in (-6, 6):                                                                          # front claws
+        f.shape(g([(dx, 20), (dx - 4, 36), (dx + 5, 36), (dx + 7, 20)]), color, 3, smooth=False)
+    f.line(g([(-44, 10), (-62, 6), (-74, 14)]), 4, amp=0.2)                                    # curled tail
+
+
+# ---------------------------------------------------------------- 道具（03/06 期）
+FINGER_SKIN = (250, 224, 196)   # 与 sun-desert 的 C.skin 同色；kit 角色固定用色，不随本期配色变
+NAIL = (250, 232, 214)
+
+
+@sample(default={}, longer=dict(s=1.3))
+def finger(f, cx, cy, s=1.0, skin=None):
+    """A pointing index finger, tip down; the rounded palm above it. (cx, cy) = the fingertip.
+    Local frame (s=1): palm top ≈ cy-512, palm half-width ≈116, finger half-width 37."""
+    skin = skin or FINGER_SKIN
+    g = lambda pts: T(pts, cx, cy, s)
+    w = 37 * s                                                             # finger half-width
+    f.shape(g([(-104, -484), (-66, -512), (66, -512), (104, -484),
+               (116, -398), (104, -324), (-104, -324), (-116, -398)]), skin, 6)
+    f.shape(g([(-w, -366), (w, -366), (w, -44), (w - 18, -8), (0, 0),
+               (-w + 18, -8), (-w, -44)]), skin, 6, smooth=False)
+    f.shape(g([(-w + 12, -62), (w - 12, -62), (w - 16, -30), (0, -18), (-w + 16, -30)]), NAIL, 4, smooth=False)
+    f.line(g([(-w + 8, -228), (w - 8, -222)]), 4, amp=0.2)                 # knuckle crease
+    f.line(g([(-104, -324), (-w + 6, -324)]), 5, amp=0.3, smooth=False)    # palm–finger folds
+    f.line(g([(104, -324), (w - 6, -324)]), 5, amp=0.3, smooth=False)
+    f.line(g([(-108, -414), (-112, -384)]), 4, amp=0.2, smooth=False)      # knuckle creases at the edge
+    f.line(g([(110, -410), (112, -380)]), 4, amp=0.2, smooth=False)
+
+
 @sample(zoo=lambda f, x, y: fence(f, x - 320, x + 320, y - 280, y))
 def fence(f, x0, x1, y0, y1, step=60):
     """Zoo enclosure: two rails and vertical bars (all ink strokes)."""

@@ -2,7 +2,7 @@
 
 由 `story.py catalog` 生成，不要手改：改了 `kit/` 或技能的 figkit 之后重新生成。看图：`catalog.png`，格子左上角的编号就是下面的 #。新画角色之前先在这里找；本系列的经验和坑见 `LESSONS.md`。
 
-<!-- catalog-of: c28426b8e9a4593a -->
+<!-- catalog-of: d02631999e63be24 -->
 
 ## 本系列素材库（kit/）
 
@@ -49,46 +49,73 @@
 
 > The deer (elk): slim body, long legs, branched antlers. head_rot ≈ 1.05 lowers the head to graze.
 
-### `fence(f, x0, x1, y0, y1, step=60)` · kit/characters.py:137
+### `kangaroo(f, cx, cy, s=1.0, pose='stand', joey=False, fur=None, head_rot=0.0)` · kit/characters.py:145
 
-样例：#15 zoo  （`zoo`: 自定义调用）
+样例：#15 standing · #16 joey_peek · #17 leap  （`joey_peek`: `{'joey': True}`；`leap`: `{'pose': 'leap'}`）
+
+部位：`kangaroo_parts(name, cx, cy, s=1.0, pose='stand', subject='kangaroo', prefix='')` · kit/character_parts.py:34
+
+> Side-view red kangaroo facing right; (cx, cy) = ground under the feet (pose="stand") or the
+> ground line under an airborne animal (pose="leap"). Local frame (s=1, stand): ear tips ≈ cy-640,
+> feet on cy, tail tip ≈ cx-350. Pouch opening runs from (52,-350) to (124,-344).
+> joey=True: a baby head peeking out of the pouch.
+
+### `joey_bean(f, cx, cy, s=1.0, color=None)` · kit/characters.py:238
+
+样例：#18 default · #19 bigger  （`bigger`: `{'s': 1.5}`）
+
+> Newborn joey about the size of a jellybean: pink bean-shaped body, closed eye, two front claws,
+> a curled tail. (cx, cy) = centre of the bean body.
+
+### `finger(f, cx, cy, s=1.0, skin=None)` · kit/characters.py:259
+
+样例：#20 default · #21 longer  （`longer`: `{'s': 1.3}`）
+
+> A pointing index finger, tip down; the rounded palm above it. (cx, cy) = the fingertip.
+> Local frame (s=1): palm top ≈ cy-512, palm half-width ≈116, finger half-width 37.
+
+### `fence(f, x0, x1, y0, y1, step=60)` · kit/characters.py:278
+
+样例：#22 zoo  （`zoo`: 自定义调用）
 
 > Zoo enclosure: two rails and vertical bars (all ink strokes).
 
 
 ## kit/ 里没有样例图的函数
 
-- `ground_part(name='ground', what='地面外框一笔')` · kit/character_parts.py:34 — The FULL catch-all for a scene's ground. List it LAST, and only when ground / grass ink is left for it to own.
+- `pose_rect(name, local, cx, cy, s=1.0)` · kit/character_parts.py:69 — `pose()` without shadowing the kangaroo's own pose argument.
+- `ground_part(name='ground', what='地面外框一笔')` · kit/character_parts.py:74 — The FULL catch-all for a scene's ground. List it LAST, and only when ground / grass ink is left for it to own.
+- `joey_parts(name, cx, cy, s=1.0, subject='joey', prefix='')` · kit/character_parts.py:60 — head (head end, closed eye, nose) / body (bean body, claws, tail) matching characters.joey_bean.
 
 ## 技能自带（figkit / partkit）
 
 ### `sanlian(f, cx, cy, gap=130, r=44)` · figkit.py:239
 
-样例：#16 default
+样例：#23 default
 
 > 一键三连 row: heart (like), coin, star (favourite), left → right.
 
 ### `sun(f, cx, cy, r=60, rays=8, fill=None)` · figkit.py:253
 
-样例：#17 default
+样例：#24 default
 
 ### `cloud(f, cx, cy, s=1.0, fill=None)` · figkit.py:261
 
-样例：#18 default
+样例：#25 default
 
 ### `tree(f, x, y_ground, h=300, crown=None, trunk=None)` · figkit.py:302
 
-样例：#19 default
+样例：#26 default
 
 ### `magnifier(f, cx, cy, r, handle=True)` · figkit.py:309
 
-样例：#20 default  （`default`: `{'r': 110}`）
+样例：#27 default  （`default`: `{'r': 110}`）
 
 > Lens rim (ink ring) + handle. Draw the magnified content first, inside radius r-10.
 
 ### `kid(f, cx, cy, s=1.0, mood='cold', hat=True, scarf=True, coat=None)` · figkit.py:353
 
-样例：#21 cold · #22 happy · #23 curious  （`happy`: `{'mood': 'happy', 'hat': False, 'scarf': False}`；`curious`: `{'mood': 'curious', 'hat': False, 'scarf': False}`）
+样例：#28 cold · #29 happy · #30 curious  （`happy`: `{'mood': 'happy', 'hat': False, 'scarf': False}`；`curious`: `{'mood': 'curious', 'hat': False, 'scarf': False}`）
 
 部位：`kid_parts(name, cx, cy, s=1.0, subject='kid', prefix='')` · partkit.py:70
 
@@ -99,7 +126,7 @@
 
 ### `quadruped(f, cx, cy, s=1.0, head_rot=0.0, crouch=0.0, lw=6, fur=None, fur2=None, ear='round', tail='stub', snout=1.0, rot=0.0, mane=None, pattern=None, pattern_color=None, eye_glow=None, head='long', stride=0.0, body='stocky', leg=0, antlers=None)` · figkit.py:395
 
-样例：#24 bear · #25 wolf_like · #26 big_cat · #27 deer_like  （`wolf_like`: `{'ear': 'pointed', 'tail': 'down', 'snout': 1.08, 'body': 'slim', 'leg': 45}`；`big_cat`: `{'head': 'round', 'tail': 'long', 'pattern': 'stripes'}`；`deer_like`: `{'ear': 'pointed', 'body': 'slim', 'leg': 60, 'snout': 0.92, 'antlers': (228, 208, 172)}`）
+样例：#31 bear · #32 wolf_like · #33 big_cat · #34 deer_like  （`wolf_like`: `{'ear': 'pointed', 'tail': 'down', 'snout': 1.08, 'body': 'slim', 'leg': 45}`；`big_cat`: `{'head': 'round', 'tail': 'long', 'pattern': 'stripes'}`；`deer_like`: `{'ear': 'pointed', 'body': 'slim', 'leg': 60, 'snout': 0.92, 'antlers': (228, 208, 172)}`）
 
 部位：`quadruped_parts(name, cx, cy, s=1.0, head_rot=0.0, crouch=0.0, legs=True, body_bottom=78, subject='animal', exclude=[[180, 215, 0.02, 0.85]], rot=0.0, stride=0.0, leg=0, tail='stub', antlers=False, prefix='')` · partkit.py:84
 
@@ -120,7 +147,7 @@
 
 ### `lying(f, cx, cy, s=1.0, fur=None, mane=None, pattern=None, pattern_color=None, ear='round', asleep=True, tail_tip=None)` · figkit.py:508
 
-样例：#28 asleep · #29 lion  （`lion`: `{'mane': (196, 122, 66)}`）
+样例：#35 asleep · #36 lion  （`lion`: `{'mane': (196, 122, 66)}`）
 
 部位：`lying_parts(name, cx, cy, s=1.0, subject='animal', prefix='', exclude=None)` · partkit.py:103
 
@@ -130,43 +157,43 @@
 
 ### `sheep(f, cx, cy, s=1.0, wool=(240, 236, 226), face=(150, 132, 118))` · figkit.py:551
 
-样例：#30 default
+样例：#37 default
 
 > A sheep: woolly scalloped body over a quadruped frame with a darker face (a plain pale quadruped reads as a bear).
 
 ### `hare(f, cx, cy, s=1.0, fur=None)` · figkit.py:559
 
-样例：#31 default
+样例：#38 default
 
 > Side-view wild hare sitting, facing right; (cx, cy) = ground under its body.
 
 ### `mouse(f, cx, cy, s=1.0, fur=None)` · figkit.py:573
 
-样例：#32 default
+样例：#39 default
 
 > Small field mouse / vole, facing right; (cx, cy) = ground.
 
 ### `beaver(f, cx, cy, s=1.0, fur=None)` · figkit.py:584
 
-样例：#33 default
+样例：#40 default
 
 > Beaver sitting by the water, facing right, with its flat tail; (cx, cy) = ground.
 
 ### `bird(f, cx, cy, s=1.0, color=None, flying=False)` · figkit.py:596
 
-样例：#34 perched · #35 flying  （`flying`: `{'flying': True}`）
+样例：#41 perched · #42 flying  （`flying`: `{'flying': True}`）
 
 > A small bird: perched (round body, facing right) or flying (two wing strokes).
 
 ### `sapling(f, x, y_ground, h=110, leaf=None)` · figkit.py:608
 
-样例：#36 default
+样例：#43 default
 
 > A young tree: thin stem with three small leaves.
 
 ### `stump(f, x, y_ground, w=26, h=30)` · figkit.py:616
 
-样例：#37 default
+样例：#44 default
 
 > A chewed-off sapling / stump: short stem with a jagged top.
 
